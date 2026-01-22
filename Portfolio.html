@@ -1,0 +1,469 @@
+HTML:
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madhan's Portfolio</title>
+    <style>
+        /* ===== Reset ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #0f172a;
+            color: #f8fafc;
+            line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* ===== Navbar ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        nav .logo {
+            color: #38bdf8;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #f8fafc;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        /* ===== Hero ===== */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            color: #38bdf8;
+            animation: glow 2s infinite alternate;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            margin-top: 10px;
+            color: #cbd5e1;
+        }
+
+        header button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 30px;
+            background: #38bdf8;
+            color: #0f172a;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        header button:hover {
+            background: #0ea5e9;
+            transform: scale(1.05);
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #38bdf8;
+            }
+
+            to {
+                text-shadow: 0 0 20px #0ea5e9;
+            }
+        }
+
+        /* ===== Sections ===== */
+        section {
+            padding: 80px 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #38bdf8;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 17px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        /* ===== Contact ===== */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        input,
+        textarea {
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        button.send {
+            background: #38bdf8;
+            color: #0f172a;
+            padding: 12px;
+            border-radius: 25px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        button.send:hover {
+            background: #0ea5e9;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #1e293b;
+            color: #94a3b8;
+            margin-top: 60px;
+        }
+
+        /* ===== Dark Mode ===== */
+        .dark {
+            background: #f8fafc;
+            color: #0f172a;
+        }
+
+        .dark nav {
+            background: rgba(248, 250, 252, 0.9);
+        }
+
+        .dark nav .logo {
+            color: #0ea5e9;
+        }
+
+        .dark nav ul li a {
+            color: #0f172a;
+        }
+
+        .dark header {
+            background: linear-gradient(135deg, #f8fafc, #cbd5e1);
+        }
+
+        .dark .card {
+            background: #e2e8f0;
+            color: #0f172a;
+        }
+
+        .toggle-btn {
+            cursor: pointer;
+            font-size: 1.2rem;
+            background: none;
+            border: none;
+            color: #38bdf8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== Navbar ===== -->
+    <nav>
+        <div class="logo">Madhanraj</div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#certificates">Certificates</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="toggle-btn" onclick="toggleTheme()">🌙</button>
+    </nav>
+
+    <!-- ===== Hero ===== -->
+    <header>
+        <img src="https://res.cloudinary.com/dmm2v7jvo/image/upload/White-Logo_zip3sq" class="nxt-logo" />
+        <img src="" alt="Madhan" class="profile-pic" />
+        <h1>Hi, I'm Madhanraj 🚀</h1>
+        <p>Aspiring Full-Stack Developer | Learner | Innovator</p>
+        <button onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'});">
+            Explore More ↓
+        </button>
+    </header>
+
+    <!-- ===== About ===== -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p style="text-align:center;max-width:700px;margin:auto;">
+            I'm Madhanraj, passionate in <b>Full Stack Developer</b> who loves crafting sleek,
+            high-performance web experiences that merge creativity and technology.
+            Currently, I’m exploring <b>Modern JavaScript frameworks</b> and building
+            innovative projects to sharpen my skills.
+        </p>
+    </section>
+
+    <!-- ===== Skills ===== -->
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="grid">
+            <div class="card">
+                <i class="fa-brands fa-jsfiddle fa-xl" style="color: #FFD43B;"></i>
+                <i class="fa-brands fa-square-js fa-xl" style="color: #FFD43B;"></i>
+                <i class="fa-brands fa-react fa-xl" style="color: #FFD43B;"></i>
+                <p>HTML, CSS, JavaScript, Bootstrap, React JS*</p>
+            </div>
+            <div class="card">
+                <i class="fa-brands fa-python fa-xl" style="color: #FFD43B;"></i>
+                <p>Python Programming</p>
+            </div>
+            <div class="card">
+                <i class="fa-brands fa-hotjar fa-xl" style="color: #FFD43B;"></i>
+                <p>SQL & Databases</p>
+            </div>
+            <div class="card">
+                <i class="fa-brands fa-medapps fa-xl" style="color: #FFD43B;"></i>
+                <p />PowerBI, UI/UX, Generative AI, Canva</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Certificates ===== -->
+    <section id="certificates">
+        <h2>Certificates</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://res.cloudinary.com/dmm2v7jvo/image/upload/Screenshot_2025-10-05_105101_yhxy3k" class="certi_img" />
+                <h1 style="font-size:14px">HTML CSS Bootstrap</h1>
+            </div>
+            <div class="card">
+                <img src="https://res.cloudinary.com/dmm2v7jvo/image/upload/Screenshot_2025-10-05_105049_qmlhdr" class="certi_img" />
+                <h1 style="font-size:14px">Bootstrap FlexBox</h1>
+            </div>
+            <div class="card">
+                <img src="https://res.cloudinary.com/dmm2v7jvo/image/upload/Screenshot_2025-10-05_104944_mtwbzj" class="certi_img" />
+                <h1 style="font-size:14px">JavaScript</h1>
+            </div>
+            <div class="card">
+                <img src="https://res.cloudinary.com/dmm2v7jvo/image/upload/Screenshot_2025-10-05_105001_wf4e6x" class="certi_img" />
+                <h1 style="font-size:14px">Python</h1>
+            </div>
+            <div class="card">
+                <img src="https://res.cloudinary.com/dmm2v7jvo/image/upload/Screenshot_2025-10-05_105030_hwbxql" class="certi_img" />
+                <h1 style="font-size:14px">SQL</h1>
+            </div>
+            <div class="card">
+                <img src="https://res.cloudinary.com/dmm2v7jvo/image/upload/IL2WIICF6U_sgytkd" class="certi_img" />
+                <h1 style="font-size:14px">UI/UX</h1>
+            </div>
+            <div class="card">
+                <img src="https://res.cloudinary.com/dmm2v7jvo/image/upload/Screenshot_2025-10-05_105243_b11oux" class="certi_img" />
+                <h1 style="font-size:14px">PowerBI / Kaggle</h1>
+            </div>
+            <div class="card">
+                <img src="https://res.cloudinary.com/dmm2v7jvo/image/upload/Screenshot_2025-10-05_105157_i06fyg" class="certi_img" />
+                <h1 style="font-size:14px">Generative AI</h1>
+            </div>
+            <div class="card">
+                <img src="https://res.cloudinary.com/dmm2v7jvo/image/upload/Screenshot_2025-10-05_162403_befc3j" class="certi_img" />
+                <h1 style="font-size:14px">10 AI Tools</h1>
+            </div>
+            <div class="card">
+                <img src="https://res.cloudinary.com/dmm2v7jvo/image/upload/CCNA-networking_academy_dla5ni" class="certi_img" />
+                <h1 style="font-size:14px">CCNA Networking</h1>
+            </div>
+            <div class="card">
+                <img src="https://res.cloudinary.com/dmm2v7jvo/image/upload/Screenshot_2024-08-22_215134_dcmymf" class="certi_img" />
+                <h1 style="font-size:14px">INTERNSHIP AT TECHNO HACKS</h1>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Projects ===== -->
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="grid">
+            <div class="card">
+                <i class="fa-solid fa-hotel fa-xl" style="color: #FFD43B;"></i>
+                <h3>Royal Hotel</h3>
+                <p>Delicious dining online — taste, ambiance, and service perfected🍽️✨</p>
+                <a href="" style="color:#FFD700 ;">Visit</a>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-address-card fa-xl" style="color: #FFD43B;"></i>
+                <h3>Portfolio Website</h3>
+                <p>Showcasing skills, projects, creativity, and passion in one place💼✨</p>
+                <a href="" style="color:#FFD700 ;">Visit</a>
+            </div>
+            <div class="card">
+                <i class="fa-brands fa-shopify fa-xl" style="color: #FFD43B;"></i>
+                <h3>Skeches Website</h3>
+                <p>Trendy shoes online — style, comfort, and confidence in steps👟✨</p>
+                <a href="" style="color:#FFD700 ;">Visit</a>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-cat fa-xl" style="color: #FFD43B;"></i>
+                <h3>Cat Bulb</h3>
+                <p>Cute cat taps bulb — light flickers on, then off playfully</p>
+                <a href="" style="color:#FFD700 ;">Visit</a>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-puzzle-piece fa-xl" style="color: #FFD43B;"></i>
+                <h3>Guessing Game</h3>
+                <p>Pick number, guess it, win — logic, luck, thrill combine!🎯</p>
+                <a href="" style="color:#FFD700 ;">Visit</a>
+            </div>
+            <div class="card">
+                <i class="fa-brands fa-bots fa-2xl" style="color: #FFD43B;"></i>
+                <h3>Generative AI ChatBot</h3>
+                <p>Conversational AI that learns, adapts, and responds intelligently anytime🤖✨</p>
+                <a href="" style="color:#FFD700 ;">Visit</a>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-cloud fa-xl" style="color: #FFD43B;"></i>
+                <h3>Quantum-driven IDS:Leveraging QNN Models for Advanced Cyber Threat Detection</h3>
+                <p></p>
+                <a href="" style="color:#FFD700 ;">On Going</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>Email: <a href="https://mail.google.com/mail/u/0/#inbox"> </a></p>
+        <p>Phone: </p>
+        <p>GitHub: <a href=" "> </a></p>
+        <p>LinkedIn: <a href="">  </a></p>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer>
+        <p>Made with ❤️ by Madhanraj</p>
+    </footer>
+
+    <script>
+        // Dark / Light Mode Toggle
+        function toggleTheme() {
+            document.body.classList.toggle('dark');
+        }
+
+        // Fake Form Submission
+        function sendMessage(e) {
+            e.preventDefault();
+            alert("Thanks for reaching out, Madhan will connect soon! 🚀");
+        }
+    </script>
+</body>
+
+</html>
+
+
+CSS:
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
+
+.nxt-logo {
+    height: 30px;
+    width: 70px;
+    text-align-last: 20px;
+}
+
+.hero {
+    background: linear-gradient(135deg, #0a0f1f, #06142e, #0a2342);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 50px 20px;
+    color: white;
+}
+
+.profile-pic {
+    width: 200px;
+    /* slightly bigger for clarity */
+    height: 250px;
+    object-fit: cover;
+    transform: translateY(30px);
+    /* full photo shows properly */
+    border-radius: 50%;
+    border: 4px solid #00bfff;
+    background-color: #FFFF00;
+    /* dark contrast circle */
+    box-shadow: 0 0 30px #00bfff, 0 0 60px #0077ff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.profile-pic:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px #00ffff, 0 0 80px #0099ff;
+}
+
+.certi_img {
+    height: 120px;
+    width: 200px;
+}
